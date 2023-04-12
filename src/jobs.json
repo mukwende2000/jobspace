@@ -1,0 +1,20 @@
+{
+  "jobs": [
+    {
+      "id": 1,
+      "title": "Driver"
+    },
+    {
+      "id": 2,
+      "title": "Engineer"
+    },
+    {
+      "id": 3,
+      "title": "Developer"
+    },
+    {
+      "id": 4,
+      "title": "Data Scientist"
+    }
+  ]
+}
