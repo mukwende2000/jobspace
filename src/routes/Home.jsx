@@ -3,7 +3,7 @@ import hero from "../assets/images/hero.jpg"
 
 export default function Home() {
   return (
-    <section className="flex gap-10 mb-8 mt-7">
+    <section className="mb-8 mt-7">
       <div>
         <h1 className="uppercase text-5xl font-[700]">hello, we are jobspace</h1>
         <p className="mb-10">
@@ -14,9 +14,7 @@ export default function Home() {
         </p>
         <Link to="jobs" className="p-3 cursor-pointer transition-all duration-500 border-white border-solid border rounded text-sm uppercase bg-white text-blue-900 hover:bg-transparent hover:text-white font-bold">Find a Job</Link>
       </div>
-      <div>
-        <img src={ hero } alt="A man on a laptop" className="" />
-      </div>
+      <img src={ hero } alt="A man on a laptop" className="" />
     </section>
   )
 }
