@@ -1,4 +1,4 @@
-import { Link, Outlet } from "react-router-dom";
+import { Link, Outlet, useNavigate } from "react-router-dom";
 
 // components
 import Backdrop from "../components/Backdrop";
@@ -8,14 +8,24 @@ import ListItem from "../components/ListItem";
 import logo from '../assets/images/logo.jpg'
 
 // React Icons Library
-import { FaBars, FaFacebook, FaHamburger, FaWindowClose } from 'react-icons/fa'
+import { FaBars, FaFacebook, FaHamburger, FaUser, FaWindowClose } from 'react-icons/fa'
 import { FaLinkedin } from 'react-icons/fa'
 import { FaTwitter } from 'react-icons/fa'
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function Root() {
   const [menuIsOpen, setMenuIsOpen] = useState(false)
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
+  const navigate = useNavigate()
 
+  const usersDb = JSON.parse(localStorage.getItem("users"))
+    useEffect(()=> {
+      if(usersDb.some(user => user.isLoggedIn)) {
+        setIsLoggedIn(true)
+      } else {
+        setIsLoggedIn(false)
+      }
+    }, [usersDb])
   function toggleMenu() {
     setMenuIsOpen(!menuIsOpen)
   }
@@ -24,7 +34,7 @@ export default function Root() {
     <div className="bg-indigo-950 text-white">
       <Backdrop onToggleMenu={toggleMenu} menuIsOpen={ menuIsOpen} />
       <header className="pt-5 px-20 flex justify-between items-center">
-        <img src={logo} alt="natchen logo" className="rounded-full h-11 w-12 -ml-10 mr-5" />
+        <img onClick={() => navigate('/')} src={logo} alt="natchen logo" className="rounded-full h-11 w-12 -ml-10 mr-5" />
         <FaBars onClick={toggleMenu} />
         <nav className={`bg-blue-900 fixed ${menuIsOpen ? '-right-0' : '-right-60' } bottom-0 top-0 w-3/6`}>
             <ul className={''}>
@@ -34,10 +44,16 @@ export default function Root() {
                 <ListItem toggleMenu={toggleMenu} to="about" name="about" />
                 <ListItem toggleMenu={toggleMenu} to="people" name="people" />
             </ul>
-            <ul className="flex items-center bg-red-9000">
-                <button className="p-1 cursor-pointer transition-all duration-500 border-white border-solid border rounded text-sm uppercase bg-white text-blue-900 hover:bg-transparent hover:text-white font-bold">Login</button>
-                <ListItem to="signup" name="Sign Up" />
+            {isLoggedIn ?
+             <ul className="flex items-center bg-red-9000">
+                <li><Link onClick={() => setMenuIsOpen(false)} to={"profile"} className="p-1 cursor-pointer transition-all duration-500 border-white border-solid border rounded text-sm uppercase bg-white text-blue-900 hover:bg-transparent hover:text-white font-bold"><FaUser /></Link></li>
+                <li className="ml-3" ><button className="p-1 cursor-pointer transition-all duration-500 border-white border-solid border rounded text-sm uppercase bg-white text-blue-900 hover:bg-transparent hover:text-white font-bold">logout</button></li>
             </ul>
+             
+            : <ul className="flex items-center bg-red-9000">
+                <li><button className="p-1 cursor-pointer transition-all duration-500 border-white border-solid border rounded text-sm uppercase bg-white text-blue-900 hover:bg-transparent hover:text-white font-bold">Login</button></li>
+                <ListItem to="signup" name="Sign Up" />
+            </ul>}
         </nav>
       </header>
       <main className="px-5">

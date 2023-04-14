@@ -1,7 +1,6 @@
-import { Form, redirect, useLoaderData } from "react-router-dom";
+import { Form, redirect } from "react-router-dom";
 
 export default function PostJob() {
-  const data = useLoaderData()
   return (
     <div>
         <Form className="w-full" method="post" action="/post-job">
@@ -18,8 +17,13 @@ export default function PostJob() {
             <input className="w-full" type="number" id="salary" name="salary" placeholder="salary, optional" />
           </div>
           <div>
+            <label htmlFor="location">Location</label>
+            <input className="w-full" type="text" id="location" name="location" placeholder="location"/>
+          </div>
+          <div>
             <label htmlFor="description">Description</label>
-            <textarea className="w-full" name="description" id="description" cols="30" rows="10"></textarea>
+            <textarea className="w-full" name="description" id="description" cols="30" rows="10" 
+            placeholder="Write a short description of the job, be sure to include your contac details"></textarea>
           </div>
           <div>
             <p>
@@ -46,20 +50,18 @@ export async function action({ request }) {
   const job = {
     title: data.get("title"),
     closing: data.get("closing"),
-    salary: data.get("salary"),
+    salary: data.get("salary") ? data.get("salary") : 'TBA',
     description: data.get("description"),
     type: data.get("type"),
+    location: data.get('location'),
+    datePosted: new Date().toLocaleString()
   }
   if(localStorage.getItem("jobs")) {
     const jobsDd = JSON.parse(localStorage.getItem('jobs'))
-    jobsDd.push(job)
+    jobsDd.unshift(job)
     localStorage.setItem("jobs", JSON.stringify(jobsDd))
   } else {
     localStorage.setItem("jobs", JSON.stringify([job]))
   }
   return redirect('/jobs')
-}
-export async function loader({ request }) {
-  // const data = await 
-  return 'Hello world'
 }

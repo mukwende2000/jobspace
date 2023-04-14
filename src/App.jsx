@@ -1,13 +1,13 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-import './App.css'
 import Root from './layouts/Root'
 import Jobs, { loader as jobsLoader } from './routes/Jobs'
 import Home from './routes/Home'
 import Job, { loader as jobLoader} from './routes/Job'
 import About from './routes/About'
 import People from './routes/People'
-import PostJob, { action as PostJobAction, loader as PostJobLoader} from './routes/PostJob'
-import SignUp from './routes/SignUp'
+import PostJob, { action as PostJobAction} from './routes/PostJob'
+import SignUp, { action as SignUpAction} from './routes/SignUp'
+import Profile, { loader as profileLoader} from './routes/Profile'
 
 function App() {
 
@@ -41,12 +41,17 @@ function App() {
         {
           path: 'post-job',
           element: <PostJob />,
-          loader: PostJobLoader,
           action: PostJobAction
         },
         {
           path: 'signup',
-          element: <SignUp />
+          element: <SignUp />,
+          action: SignUpAction
+        },
+        {
+          path: 'profile',
+          element: <Profile />,
+          loader: profileLoader
         }
       ]
     }

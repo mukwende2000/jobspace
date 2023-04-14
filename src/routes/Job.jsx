@@ -13,15 +13,8 @@ export default function Job() {
   )
 }
 
-// export async function loader({ params }) {
-//     const res = await fetch('http://localhost:3000/jobs/' + params.jobId)
-//     const resData = await res.json()
-//     return resData
-// }
 export async function loader({ params }) {
-  const response = JSON.parse(localStorage.getItem("jobs")) // await fetch('http://localhost:3000/jobs')
-  // console.log(response)
+  const response = JSON.parse(localStorage.getItem("jobs"))
   const resData = response[params.jobId]
-  // const resData = await response.json()
   return resData
 }
