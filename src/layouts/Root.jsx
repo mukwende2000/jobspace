@@ -20,6 +20,7 @@ export default function Root() {
 
   const usersDb = JSON.parse(localStorage.getItem("users"))
     useEffect(()=> {
+      if(!usersDb) return
       if(usersDb.some(user => user.isLoggedIn)) {
         setIsLoggedIn(true)
       } else {
@@ -32,11 +33,11 @@ export default function Root() {
 
   return (
     <div className="bg-indigo-950 text-white">
-      <Backdrop onToggleMenu={toggleMenu} menuIsOpen={ menuIsOpen} />
+      <Backdrop onBackDropClick={toggleMenu} isOpen={ menuIsOpen} />
       <header className="pt-5 px-20 flex justify-between items-center">
         <img onClick={() => navigate('/')} src={logo} alt="natchen logo" className="rounded-full h-11 w-12 -ml-10 mr-5" />
         <FaBars onClick={toggleMenu} />
-        <nav className={`bg-blue-900 fixed ${menuIsOpen ? '-right-0' : '-right-60' } bottom-0 top-0 w-3/6`}>
+        <nav className={`bg-blue-900 fixed ${menuIsOpen ? '-right-0' : '-right-60' } bottom-0 top-0 w-3/6 md:hidden`}>
             <ul className={''}>
                <button type="button"><FaWindowClose onClick={toggleMenu} /></button>
                 <ListItem toggleMenu={toggleMenu} to="/" name="Home" />

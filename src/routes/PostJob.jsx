@@ -6,11 +6,11 @@ export default function PostJob() {
         <Form className="w-full" method="post" action="/post-job">
           <div>
             <label htmlFor="title">Title</label>
-            <input className="w-full" type="text" id="title" name="title" placeholder="e.g machine operator" />
+            <input className="w-full" type="text" id="title" name="title" placeholder="e.g machine operator" required />
           </div>
           <div>
             <label htmlFor="closing">Closing Date</label>
-            <input className="w-full" type="date" name="closing" id="closing" placeholder="Closing date" />
+            <input className="w-full" type="date" name="closing" id="closing" placeholder="Closing date" required />
           </div>
           <div>
             <label htmlFor="salary">Salary</label>
@@ -18,24 +18,24 @@ export default function PostJob() {
           </div>
           <div>
             <label htmlFor="location">Location</label>
-            <input className="w-full" type="text" id="location" name="location" placeholder="location"/>
+            <input className="w-full" type="text" id="location" name="location" placeholder="location" required/>
           </div>
           <div>
             <label htmlFor="description">Description</label>
             <textarea className="w-full" name="description" id="description" cols="30" rows="10" 
-            placeholder="Write a short description of the job, be sure to include your contac details"></textarea>
+            placeholder="Write a short description of the job, be sure to include your contac details" required></textarea>
           </div>
           <div>
             <p>
-            <input type="radio" name="type" value={'permanent'} id="permanent" />
+            <input type="radio" name="type" value={'permanent'} id="permanent" required />
             <label htmlFor="permanent">Permanent</label>
             </p>
             <p>
-            <input type="radio" name="type" value={'permanent'} id="casual" />
+            <input type="radio" name="type" value={'permanent'} id="casual" required />
             <label htmlFor="casual">Casual</label>
             </p>
             <p>
-            <input type="radio" name="type" value={'permanent'} id="contract" />
+            <input type="radio" name="type" value={'permanent'} id="contract" required />
             <label htmlFor="contract">Contract</label>
             </p>
           </div>
@@ -65,3 +65,5 @@ export async function action({ request }) {
   }
   return redirect('/jobs')
 }
+
+

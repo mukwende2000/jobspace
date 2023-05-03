@@ -1,61 +1,52 @@
-import { useState } from "react";
-import { Form, redirect } from "react-router-dom";
+import { redirect, Form } from "react-router-dom";
 
-
+let message
 export default function SignUp() {
-  const [isEmployer, setIsEmployer] = useState(false)
 
   return (
-    <section>
-        <Form method="POST" action="/signup">
+    <Form method="POST" action="/signup">
           <div>
-            <label htmlFor="name">Userame</label>
-            <input className="w-full" type="text" id="name" name="name" placeholder="Enter Name" />
+            <label htmlFor="username">Full Name</label>
+            <input className="block w-full" type="text" name="username" id="username" />
           </div>
           <div>
             <label htmlFor="password">Password</label>
-            <input className="w-full" type="password" name="password" id="password" />
+            <input className="block w-full" type="password" name="password" id="password" />
           </div>
           <div>
-            <label htmlFor="matcher">Confirm Password</label>
-            <input className="w-full" type="password" name="matcher" id="matcher" />
+            <label htmlFor="confirmation">Confirm Password</label>
+            <input className="block w-full" type="password" name="confirmation" id="confirmation" />
           </div>
           <div>
             <label htmlFor="location">Location</label>
-            <input className="w-full" type="text" name="location" id="location" />
+            <input className="block w-full" type="text" name="location" id="location" />
           </div>
           <div>
-            <input onChange={() => setIsEmployer(false)} defaultChecked type="radio" name="position" id="employee" />
-            <label htmlFor="employee">Employee</label>
-          </div>
-          <div>
-            <input onChange={() => setIsEmployer(true)} type="radio" name="position" id="employer" />
-            <label htmlFor="employer">Employer</label>
-          </div>
-          {isEmployer && (<div>
             <label htmlFor="company">Company</label>
-            <input className="w-full" type="text" name="company" id="company" />
-          </div>)}
-          <button className="text-lg text-teal-100" type="submit">Create Account</button>
-        </Form>
-    </section>
-  )
-}
-
+            <input className="block w-full" type="text" name="company" id="company" />
+          </div>
+          <p>{message}</p>
+         <button type="submit" className="text-white text-xl">Submit</button>
+    </Form> )
+  }
 
 export async function action({ request }) {
   const data = await request.formData()
+  // if(!passwordValidation) {
+  //   message = "passwords must match"
+  //   return null
+  // } else {
+  //   message = ""
+  // }
   const user = {
-    name: data.get("name"),
+    username: data.get("username"),
     password: data.get("password"),
-    matcher: data.get("matcher"),
+    confirmation: data.get("confirmation"),
     location: data.get("location"),
-    position: data.get('position'),
     company: data.get("company"),
     dateCreated: new Date().toLocaleString(),
     isLoggedIn: true
   }
-  console.log(user)
   if(localStorage.getItem("users")) {
     const usersDd = JSON.parse(localStorage.getItem('users'))
     usersDd.unshift(user)
@@ -65,3 +56,7 @@ export async function action({ request }) {
   }
   return redirect('/profile')
 }
+
+function passwordValidation(data) {
+   return data.get("password") === data.get("confirmation")
+  }
