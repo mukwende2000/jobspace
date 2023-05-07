@@ -1,40 +1,37 @@
-import { useState } from "react"
 import { useLoaderData, useNavigate } from "react-router-dom"
-import Popup from "../components/Popup"
+import { useDispatchProvider } from "../Contexts/ContextProvider"
+import useStateProvider from "../Contexts/ContextProvider"
+import { useEffect } from "react"
 
-const usersDb = JSON.parse(localStorage.getItem("users"))
 export default function Profile() {
     const navigate = useNavigate()
-    const data = useLoaderData()
-    const [isLoggedIn, setIsLoggedIn] = useState(usersDb.some(user => user.isLoggedIn))
-    const [popupIsActive, setPopupIsActive] = useState(false)
+    const { dispatch } = useDispatchProvider()
+    const { isLoggedIn, currentUser } = useStateProvider()
+    const newUser = useLoaderData();
     
+    useEffect(() => {
+        console.log("working")
+        dispatch({type: 'setCurrentUser', payload: {currentUser: newUser}})
+        dispatch({type: "loginUser"})
+    }, [newUser])
+    
+    console.log(newUser)
+    console.log(currentUser)
+
      function handleClick() {
-    
-        usersDb.forEach(user => {
-            if(user.isLoggedIn) {
-                user.isLoggedIn = false
-            }
-        localStorage.setItem("users", JSON.stringify(usersDb))
-    }) 
-    setIsLoggedIn(false)
-    navigate('/')
+        dispatch({type: "logoutUser"})
+        dispatch({type: 'setCurrentUser', payload: {currentUser: null}})
+        navigate('/')
     }
-    console.log(isLoggedIn)
-  return (
+
+    return (
     <>
-    { popupIsActive && <Popup />}
-    {isLoggedIn ? <div>
-        <h1>{ data.username }</h1>
-        <h1>{ data.location }</h1>
-        <p>{ data.company }</p>
+    <div>
+        <h1>{ currentUser?.username }</h1>
+        <h1>{ currentUser?.location }</h1>
+        <p>{ currentUser?.company }</p>
         <button onClick={handleClick} className="text-lg text-teal-400 border border-solid">Logout</button>
     </div>
-    :
-<button 
-onClick={() => setPopupIsActive(true)}
-className="text-lg text-teal-400 border border-solid">Login</button>
-}
     </>
     
   )
@@ -42,13 +39,5 @@ className="text-lg text-teal-400 border border-solid">Login</button>
 
 
 export async function loader() {
-    const usersDb = JSON.parse(localStorage.getItem("users"))
-    if(!usersDb) return
-    let currentUser 
-    usersDb.forEach(user => {
-        if(user.isLoggedIn) {
-            currentUser = user
-        }
-    })
-    return currentUser || null
+    return JSON.parse(localStorage.getItem('newUser'))
 }

@@ -47,6 +47,8 @@ export async function action({ request }) {
     dateCreated: new Date().toLocaleString(),
     isLoggedIn: true
   }
+  localStorage.setItem('newUser', JSON.stringify(user))
+
   if(localStorage.getItem("users")) {
     const usersDd = JSON.parse(localStorage.getItem('users'))
     usersDd.unshift(user)
