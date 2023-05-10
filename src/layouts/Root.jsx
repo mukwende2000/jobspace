@@ -29,6 +29,7 @@ export default function Root() {
   function handleClick() {
     dispatch({type: "logoutUser"})
     dispatch({type: 'setCurrentUser', payload: {currentUser: null}})
+    localStorage.setItem('newUser', JSON.stringify(null))
     navigate('/')
 }
   function closeMenu() {

@@ -1,9 +1,12 @@
-import { Form, redirect } from "react-router-dom";
+import { Form, redirect, Link } from "react-router-dom";
+import useStateProvider, { useDispatchProvider } from "../Contexts/ContextProvider";
 
 export default function PostJob() {
+  const { isLoggedIn } = useStateProvider() 
+  const { dispatch } = useDispatchProvider()
   return (
     <div>
-        <Form className="w-full" method="post" action="/post-job">
+        {isLoggedIn ? <Form className="w-full" method="post" action="/post-job">
           <div>
             <label htmlFor="title">Title</label>
             <input className="w-full" type="text" id="title" name="title" placeholder="e.g machine operator" required />
@@ -40,7 +43,11 @@ export default function PostJob() {
             </p>
           </div>
           <button type="submit" className="bg-white text-lg">Submit</button>
-        </Form>
+        </Form> : 
+        <div>
+          <p>Sorry, you need to be signed in to post a job</p>
+          <p> <Link onClick={() => dispatch({type: "openPopup"})}>Log in</Link> or <Link to={'/signup'}>Create Account</Link>  </p>
+        </div>}
     </div>
   )
 }

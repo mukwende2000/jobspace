@@ -3,7 +3,7 @@ import { Form, useNavigate } from "react-router-dom";
 import useStateProvider from "../Contexts/ContextProvider";
 import { useDispatchProvider } from "../Contexts/ContextProvider"
 
-export default function Popup({ setIsLoggedIn, setPopupIsOpen }) {
+export default function Popup() {
   const navigate = useNavigate()
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
@@ -18,8 +18,6 @@ export default function Popup({ setIsLoggedIn, setPopupIsOpen }) {
         dispatch({type: 'loginUser'})
         dispatch({type: 'setCurrentUser', payload: {currentUser: user}})
         dispatch({type: 'closePopup'})
-
-        navigate('/profile')
       } else {
         dispatch({type: 'displayInvalidMessage'})
       }
