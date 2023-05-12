@@ -4,11 +4,33 @@ import { useLoaderData } from "react-router-dom";
 
 // helper functions
 import { calculatePostAge, shortedDescription } from "../functions";
+import { useEffect } from "react";
+import useStateProvider, { useDispatchProvider } from "../Contexts/ContextProvider";
 
 export default function Jobs() {
     const jobs = useLoaderData()
     const navigate = useNavigate()
+    const { dispatch } = useDispatchProvider()
+    const { currentUser } = useStateProvider()
     
+    useEffect(() => {
+      const usersDb = JSON.parse(localStorage.getItem('users'))
+      const filteredDb = usersDb.filter(user => user?.username !== currentUser?.username)
+      const nextUser = {...currentUser}
+      console.log(nextUser)
+      nextUser.jobs = []
+      jobs?.map(job => {
+          if(job.poster?.username === currentUser?.username) {
+              nextUser.jobs.push(job)
+              console.log(nextUser)
+              dispatch({type: "setCurrentUser", payload: {currentUser: nextUser}})
+          } else {
+              console.log('No match found')
+          }
+      })
+      filteredDb.push(nextUser)
+      localStorage.setItem('users', JSON.stringify(filteredDb))
+    },[])
   return (
 
     <div>
@@ -18,7 +40,7 @@ export default function Jobs() {
         <ul>{ jobs.map((job, index) => {
             return (
             <li key={job.id} className="-ml-10 bg-indigo-800 text-teal-100 my-3 p-3 rounded">
-              <p className="my-0 text-sm flex justify-between"><span>Company</span><span className="text-sm">{ calculatePostAge(jobs[index].datePosted, new Date().toLocaleString())}</span></p>
+              <p className="my-0 text-sm flex justify-between"><span>{job.poster.company || job.poster.username}</span><span className="text-sm">{ calculatePostAge(jobs[index].datePosted, new Date().toLocaleString()) }</span></p>
                 <Link to={`${index}`} className="text-4xl text-teal-100">
                   {jobs[index].title}
                 </Link>
@@ -39,6 +61,6 @@ export default function Jobs() {
 }
 
 export async function loader() {
-    const response = JSON.parse(localStorage.getItem("jobs")) 
+    const response = await JSON.parse(localStorage.getItem("jobs")) 
     return response
 }

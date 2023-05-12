@@ -24,7 +24,7 @@ export default function SignUp() {
           </div>
           <div>
             <label htmlFor="company">Company</label>
-            <input className="block w-full" type="text" name="company" id="company" required />
+            <input className="block w-full" type="text" name="company" id="company" placeholder="optional" />
           </div>
           <p>{data?.error}</p>
          <button type="submit" className="text-white text-xl">Submit</button>
@@ -41,7 +41,8 @@ export async function action({ request }) {
     location: data.get("location"),
     company: data.get("company"),
     dateCreated: new Date().toLocaleString(),
-    isLoggedIn: true
+    isLoggedIn: true,
+    jobs: []
   }
 
   if(!passwordValidation(data)) {

@@ -8,11 +8,21 @@ export default function Profile() {
     const { dispatch } = useDispatchProvider()
     let { currentUser } = useStateProvider()
     const data = useLoaderData() || currentUser;
+    const newUser = JSON.parse(localStorage.getItem('newUser')) 
+    const jobs = JSON.parse(localStorage.getItem('jobs')) 
     
     useEffect(() => {
         if(!currentUser) {
          dispatch({type: "loginUser"})   
         }
+
+        if(newUser !== null) {
+            dispatch({type: 'setCurrentUser', payload: { currentUser: newUser}})
+            localStorage.setItem('newUser', JSON.stringify(null)) 
+            console.log(currentUser)
+        } 
+        // console.log(currentUser?.username)
+       
     }, [])
     
 

@@ -21,7 +21,7 @@ import { useEffect, useState } from "react";
 export default function Root() {
   const navigate = useNavigate()
 
-  const usersDb = JSON.parse(localStorage.getItem("users"))
+  // const usersDb = JSON.parse(localStorage.getItem("users"))
   const { menuIsOpen, isLoggedIn, popupIsOpen } = useStateProvider()
   const { dispatch } = useDispatchProvider()
 
@@ -47,15 +47,14 @@ export default function Root() {
       }} isOpen={ menuIsOpen || popupIsOpen} />
       <header className="pt-5 px-20 flex justify-between items-center">
         <img onClick={() => navigate('/')} src={logo} alt="natchen logo" className="rounded-full h-11 w-12 -ml-10 mr-5" />
-        <FaBars onClick={openMenu} />
+        <FaBars onClick={openMenu} className="cursor-pointer text-2xl" />
         { popupIsOpen && <Popup isloggedIn={popupIsOpen} />}
         <nav className={`bg-blue-900 fixed ${menuIsOpen ? '-right-0' : '-right-60' } bottom-0 top-0 w-3/6 md:hidden`}>
             <ul className={''}>
-               <button type="button"><FaWindowClose onClick={closeMenu} /></button>
+               <button type="button"><FaWindowClose onClick={closeMenu} className="cursor-pointer text-2xl"/></button>
                 <ListItem closeMenu={closeMenu} to="/" name="Home" />
                 <ListItem closeMenu={closeMenu} to="jobs" name="Jobs" />
                 <ListItem closeMenu={closeMenu} to="about" name="about" />
-                <ListItem closeMenu={closeMenu} to="people" name="people" />
             </ul>
             {isLoggedIn ?
              <ul className="flex items-center bg-red-9000">

@@ -3,20 +3,6 @@ import hero from "../assets/images/hero.jpg"
 
 export default function Home() {
   return (
-    <section className="mb-8 mt-7 flex flex-col md:flex-row">
-      <div className="md:w-1/2 md:pr-8">
-        <h1 className="uppercase text-5xl font-[700]">hello, we are jobspace</h1>
-        <p className="mb-10">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit.
-          Aliquam quo doloremque quia ullam amet excepturi, voluptas provident 
-          repellat explicabo fuga vitae nemo sequi, ab modi repellendus nulla. 
-          Aperiam, quas libero.
-        </p>
-        <Link to="jobs" className="p-3 cursor-pointer transition-all duration-500 border-white border-solid border rounded text-sm uppercase bg-white text-blue-900 hover:bg-transparent hover:text-white font-bold">Find a Job</Link>
-      </div>
-      <div className="md:w-1/2">
-        <img src={ hero } alt="A man on a laptop" className="" />
-      </div>
-    </section>
+   <h1>Home</h1>
   )
 }

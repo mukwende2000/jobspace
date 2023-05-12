@@ -4,7 +4,6 @@ import Jobs, { loader as jobsLoader } from './routes/Jobs'
 import Home from './routes/Home'
 import Job, { loader as jobLoader} from './routes/Job'
 import About from './routes/About'
-import People from './routes/People'
 import PostJob, { action as PostJobAction} from './routes/PostJob'
 import SignUp, { action as signupAction} from './routes/SignUp'
 import Profile, { loader as profileLoader} from './routes/Profile'
@@ -28,10 +27,6 @@ function App() {
         {
           path: 'about',
           element: <About />
-        },
-        {
-          path: 'people',
-          element: <People />
         },
         {
           path: 'jobs/:jobId',

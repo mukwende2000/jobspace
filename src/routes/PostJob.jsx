@@ -61,7 +61,8 @@ export async function action({ request }) {
     description: data.get("description"),
     type: data.get("type"),
     location: data.get('location'),
-    datePosted: new Date().toLocaleString()
+    datePosted: new Date().toLocaleString(),
+    poster: JSON.parse(localStorage.getItem('newUser')) || JSON.parse(localStorage.getItem('currentUser'))
   }
   if(localStorage.getItem("jobs")) {
     const jobsDd = JSON.parse(localStorage.getItem('jobs'))
