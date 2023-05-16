@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useLoaderData } from "react-router-dom";
 
 // helper functions
-import { calculatePostAge, shortedDescription } from "../functions";
+import { calculatePostAge, shortedDescription } from "../utils/functions";
 import { useEffect } from "react";
 import useStateProvider, { useDispatchProvider } from "../Contexts/ContextProvider";
 

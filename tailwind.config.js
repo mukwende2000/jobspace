@@ -4,7 +4,14 @@ export default {
   './public/index.html',
    './src/**/*.{js,jsx}'],
   theme: {
-    extend: {},
+    extend: {
+      height: {
+        '1/8': '450px'
+      },
+      width: {
+        '2/15': '23%'
+      }
+    },
   },
   plugins: [],
   corePlugins: {
