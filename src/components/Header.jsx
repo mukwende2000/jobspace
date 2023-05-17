@@ -26,7 +26,7 @@ function Header() {
       }
     
   return (
-    <header className={`mb-60 h-1/8 px-10 text-white items-center bg-[url('./assets/images/hero.jpg')]  bg-no-repeat bg-cover bg-center`}>
+    <header className={`${location.pathname === '/' ? 'mb-60' : 'mb-10'} h-1/8 px-10 text-white items-center bg-[url('./assets/images/hero.jpg')]  bg-no-repeat bg-cover bg-center`}>
         <div className='flex justify-between items-center p-5'>
             <img onClick={() => navigate('/')} src={logo} alt="natchen logo" className="rounded-full h-11 w-12 -ml-10 mr-5" />
             <Navbar />

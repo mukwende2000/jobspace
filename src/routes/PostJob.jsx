@@ -30,15 +30,15 @@ export default function PostJob() {
           </div>
           <div>
             <p>
-            <input type="radio" name="type" value={'permanent'} id="permanent" required />
-            <label htmlFor="permanent">Permanent</label>
+            <input type="radio" name="type" value={'Full Time'} id="permanent" required />
+            <label htmlFor="permanent">Full Time</label>
             </p>
             <p>
-            <input type="radio" name="type" value={'permanent'} id="casual" required />
-            <label htmlFor="casual">Casual</label>
+            <input type="radio" name="type" value={'Part Time'} id="casual" required />
+            <label htmlFor="casual">Part Time</label>
             </p>
             <p>
-            <input type="radio" name="type" value={'permanent'} id="contract" required />
+            <input type="radio" name="type" value={'Contract'} id="contract" required />
             <label htmlFor="contract">Contract</label>
             </p>
           </div>

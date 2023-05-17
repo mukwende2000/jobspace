@@ -6,14 +6,13 @@ import { useEffect } from "react"
 export default function Profile() {
     const navigate = useNavigate()
     const { dispatch } = useDispatchProvider()
-    let { currentUser } = useStateProvider()
+    let { currentUser, isLoggedIn } = useStateProvider()
     const data = useLoaderData() || currentUser;
     const newUser = JSON.parse(localStorage.getItem('newUser')) 
     const jobs = JSON.parse(localStorage.getItem('jobs')) 
-    
     useEffect(() => {
         if(!currentUser) {
-         dispatch({type: "loginUser"})   
+            dispatch({type: "loginUser"})   
         }
 
         if(newUser !== null) {
@@ -24,6 +23,7 @@ export default function Profile() {
         // console.log(currentUser?.username)
        
     }, [])
+    console.log(isLoggedIn)
     
 
      function handleClick() {
@@ -34,7 +34,7 @@ export default function Profile() {
 
     return (
     <>
-    <div>
+    <div className="bg-blue-950">
         <h1>{ data?.username }</h1>
         <h1>{ data?.location }</h1>
         <p>{ data?.company }</p>

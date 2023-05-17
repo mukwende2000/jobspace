@@ -10,16 +10,8 @@ import Footer from "../components/Footer";
 import Header from "../components/Header";
 import Popup from "../components/Popup";
 
-
-// images
-import logo from '../assets/images/logo.jpg'
-
-// React Icons Library
-import { FaTwitter, FaLinkedin,  FaFacebook } from 'react-icons/fa'
-
 export default function Root() {
-
-  const { menuIsOpen, isLoggedIn, popupIsOpen } = useStateProvider()
+  const { menuIsOpen, popupIsOpen } = useStateProvider()
   const { dispatch } = useDispatchProvider()
 
   return (

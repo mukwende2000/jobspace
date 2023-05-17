@@ -5,7 +5,7 @@ import { useDispatchProvider } from "../Contexts/ContextProvider"
 import { FaFacebook, FaGoogle, FaLinkedin, FaTwitter } from "react-icons/fa";
 
 export default function Popup() {
-  // const data = useActionData()
+  const data = useActionData()
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [popupView, setPopupView] = useState('login')
@@ -60,26 +60,26 @@ export default function Popup() {
           </div>
           <p> { message } </p>
           </form> : (
-            <Form method="POST" action="/">
+            <Form method="POST" action="signup">
               <p>{data?.error}</p>
-                  <div className="w-10/12 my-7 mx-auto">
+            <div className="w-10/12 my-7 mx-auto">
               <div>
-                  < input className="block w-full h-8 my-5" type="text" placeholder='Your Username'/>
+                  < input className="block w-full h-8 my-5" type="text" name="username" placeholder='Your Username'/>
               </div>
               <div>
-                  < input className="block w-full h-8 my-5" type="email" placeholder='Your Email'/>
+                  < input className="block w-full h-8 my-5" type="email" name="email" placeholder='Your Email'/>
               </div>
               <div>
-                  < input onChange={e => setPassword(e.target.value)} className="block w-full h-8 my-3" type="password" id='password' placeholder='Choose Password'/>
+                  < input className="block w-full h-8 my-3" type="password" name='password' placeholder='Choose Password'/>
               </div>
               <div>
-                  < input onChange={e => setPassword(e.target.value)} className="block w-full h-8 my-3" type="password" id='password' placeholder='Confirm Password'/>
+                  < input className="block w-full h-8 my-3" type="password" name='confirmation' placeholder='Confirm Password'/>
               </div>
               <div>
-                  < input className="block w-full h-8 my-3" type="text" placeholder='Company Name'/>
+                  < input className="block w-full h-8 my-3" type="text" name="company" placeholder='Company Name'/>
               </div>
               <div>
-                  < input onChange={e => setPassword(e.target.value)} className="block w-full h-8 my-3" type="text" id='text' placeholder='Location'/>
+                  < input className="block w-full h-8 my-3" type="text" name='location' placeholder='Location'/>
               </div>
               
               <button className="text-xl text-white p-2 w-full bg-[#007bff] cursor-pointer" type='submit'>Sign Up</button>

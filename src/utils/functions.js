@@ -68,7 +68,7 @@ const data = [
     location: "Lusaka, Kanyama", 
     salary: '2000',
     title: "Living in maid",
-    type: "Permanent"
+    type: "Full Time"
     
   },
   {
@@ -80,7 +80,7 @@ const data = [
     location: "Lusaka, Kanyama", 
     salary: '2000',
     title: "Living in maid",
-    type: "Permanent"
+    type: "Part Time"
     
   },
   {
@@ -92,7 +92,7 @@ const data = [
     location: "Lusaka, Kanyama", 
     salary: '2000',
     title: "Living in maid",
-    type: "Permanent"
+    type: "Contract"
     
   }
 ]

@@ -5,7 +5,7 @@ import Home from './routes/Home'
 import Job, { loader as jobLoader} from './routes/Job'
 import About from './routes/About'
 import PostJob, { action as PostJobAction} from './routes/PostJob'
-import SignUp, { action as signupAction} from './routes/SignUp'
+import { action as signupAction} from './routes/signupAction'
 import Profile, { loader as profileLoader} from './routes/Profile'
 
 function App() {
@@ -40,7 +40,7 @@ function App() {
         },
         {
           path: 'signup',
-          element: <SignUp />,
+          // element: <SignUp />,
           action: signupAction
         },
         {
