@@ -15,6 +15,11 @@ img {
 li {
     list-style: none;
 }
+article li {
+    list-style: initial;
+    margin-left: -20px;
+    color: gray;
+}
 a {
     text-decoration: none;
 }
