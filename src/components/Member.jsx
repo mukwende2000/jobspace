@@ -3,10 +3,9 @@ import { FaFacebook, FaInstagram, FaLinkedin, FaTwitter } from "react-icons/fa"
 function Member({ img, title, name}) {
     console.log(img.slice(19))
   return (
-    <div className="my-10 p-5 text-white flex flex-col items-start justify-end relative overflow-hidden h-[40rem] group cursor-pointer">
-        <div className={`absolute bg-cover bg-center cursor-pointer group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300`} />
-        <img className="w-full h-full object-cover object-center cursor-pointer group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300" src={img} alt={name} />
-        <div className="opacity-0 group-hover:opacity-100 scale-150 group-hover:scale-100 transition-transform transition-opacity duration-500 relative z-20">
+    <div className="mb-10 p-5 text-white flex flex-col items-start justify-end relative overflow-hidden w-[90%] h-[40rem] md:h-[27rem] group cursor-pointer">
+        <img className="absolute left-0 right-0 top-0 bottom-0 w-full h-full object-cover cursor-pointer group-hover:scale-110 group-hover:rotate-3 duration-300" src={img} alt={name} />
+        <div className="opacity-0 group-hover:opacity-100 scale-150 group-hover:scale-100  transition-opacity duration-500 relative z-20">
             <p className="mb-0 font-extrabold text-left text-2xl">
                 { name }
             </p>
@@ -25,3 +24,6 @@ function Member({ img, title, name}) {
 }
 
 export default Member
+
+
+//absolute bg-cover bg-center cursor-pointer group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300

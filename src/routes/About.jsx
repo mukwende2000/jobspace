@@ -8,19 +8,21 @@ import emma from '../assets/images/emma.jpg'
 function About() {
   return (
     <>
-      <article className="text-gray-500 md:px-16 md:flex">
-        <div className='w-[60%]'>
+      <article className="text-gray-500 md:px-16 lg:flex gap-10">
+        <div className='md:w-[100%]'>
           <h1 className="text-black">About Jobspace</h1>
-          <p>
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Numquam eius, cumque eaque iste amet deleniti repudiandae debitis consequatur, vel, non nulla autem sequi qui accusamus? Tempore pariatur deleniti voluptas quas porro incidunt id, doloremque quidem at fugiat neque soluta temporibus!
-          </p>
-          <ul>
-            <li>Tempore pariatur deleniti voluptas</li>
-            <li>Amet deleniti repudiandae debitis consequatu</li>
-            <li>Lorem ipsum, dolor sit amet</li>
-            <li>Consectetur adipisicing elit</li>
-            <li>Numquam eius, cumque eaque iste</li>
-          </ul>
+          <div>
+              <p>
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Numquam eius, cumque eaque iste amet deleniti repudiandae debitis consequatur, vel, non nulla autem sequi qui accusamus? Tempore pariatur deleniti voluptas quas porro incidunt id, doloremque quidem at fugiat neque soluta temporibus!
+              </p>
+              <ul>
+                <li>Tempore pariatur deleniti voluptas</li>
+                <li>Amet deleniti repudiandae debitis consequatu</li>
+                <li>Lorem ipsum, dolor sit amet</li>
+                <li>Consectetur adipisicing elit</li>
+                <li>Numquam eius, cumque eaque iste</li>
+              </ul>
+          </div>
         </div>
         <div>
           <img src={about1} alt="Chefs in the kitchen" />
@@ -28,14 +30,14 @@ function About() {
       </article>
       <div className='text-center'>
         <div>
-            <h2>Our Team</h2>
+            <h2 className='-mb-5 mt-10'>Our Team</h2>
            <p>Our team are build by all professional members who always try to get the work done.</p>
         </div>
         <div className='md:flex justify-center gap-10'>
-            <Member title="Founder" name="Brie Chisomo" img={brie} />
-            <Member title="Product Manager" name="Lex Moyo" img={lex} />
-            <Member title="Designer" name="Emmanuel Chisome" img={emma} />
-            <Member title="Full Stack Developer" name="Roy Mubila" img={roy} />
+            <Member title="Founder" name="Lex Moyo" img={emma} />
+            <Member title="Product Manager" name="Emmanuel Chisome" img={roy} />
+            <Member title="Designer" name="Brie Chisomo" img={brie} />
+            <Member title="Full Stack Developer" name="Lex Moyo" img={lex} />
         </div>
       </div>
     </>
