@@ -6,7 +6,6 @@ export default function Job() {
     <div>
         <h1>{ data.title }</h1>
         <p>{ data.poster.company }</p>
-        <h2>{ data.type }</h2>
         <p>{data.description}</p>
         <p> {`Closing Date: ${data.closing}`} </p>
         <p> {`Salary ranges from: ${data.salary}`} </p>

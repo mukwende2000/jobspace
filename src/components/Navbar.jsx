@@ -45,7 +45,7 @@ function Navbar() {
               }} className="p-1 cursor-pointer transition-all duration-500 text-sm uppercase bg-gray-500 md:bg-transparent text-white px-8 py-3 mr-3 hover:bg-sky-500">Login</button>
             </li>
             <li className='bg-gray-500 md:bg-transparent text-white px-6 py-3 hover:bg-sky-500 cursor-pointer'>
-                <Link className='text-white' closeMenu={closeMenu} to="signup">Sign Up</Link>
+                <Link className='text-white uppercase' closeMenu={closeMenu} to="signup">Sign Up</Link>
             </li>
         </ul>}
         <ul className={'md:flex gap-5'}>
