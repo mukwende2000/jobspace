@@ -3,10 +3,11 @@ import { reducer } from "../utils/functions";
 
 const initialState = {
     popupIsOpen: false,
+    popupView: 'login',
     isLoggedIn: JSON.parse(localStorage.getItem('isLoggedIn')),
     menuIsOpen: false,
     message: "",
-    currentUser: JSON.parse(localStorage.getItem('currentUser'))
+    currentUser: JSON.parse(localStorage.getItem('currentUser')),
 }
 
 export const Context = createContext()
@@ -17,6 +18,7 @@ export function ContextProvider({ children }) {
     return (
         <Context.Provider value={{
             popupIsOpen: state.popupIsOpen,
+            popupView: state.popupView,
             menuIsOpen: state.menuIsOpen,
             isLoggedIn: state.isLoggedIn,
             message: state.message,

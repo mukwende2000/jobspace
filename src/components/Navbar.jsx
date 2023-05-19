@@ -1,7 +1,7 @@
 import { FaUser, FaWindowClose } from 'react-icons/fa'
 import ListItem from './ListItem';
 
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import useStateProvider from '../Contexts/ContextProvider';
 import { useDispatchProvider } from '../Contexts/ContextProvider';
@@ -10,6 +10,7 @@ import { useDispatchProvider } from '../Contexts/ContextProvider';
 function Navbar() {
   const { menuIsOpen, isLoggedIn } = useStateProvider()
   const { dispatch } = useDispatchProvider()
+  const navigate = useNavigate()
 
   function handleClick() {
     dispatch({type: "logoutUser"})
@@ -26,12 +27,12 @@ function Navbar() {
         {isLoggedIn ?
          <ul className="flex items-center bg-red-9000">
             <li>
-              <Link onClick={() => dispatch({type: "closeMenu"})} to={"profile"} className="p-1 cursor-pointer transition-all duration-500 border-white border-solid border rounded text-sm uppercase bg-white text-blue-900 hover:bg-transparent hover:text-white font-bold">
+              <Link onClick={() => dispatch({type: "closeMenu"})} to={"profile"} className="p-1 cursor-pointer transition-all duration-500 border-white border-solid border rounded text-sm uppercase bg-white text-blue-900 hover: hover:text-pink-500 font-bold">
                 <FaUser />
               </Link>
             </li>
             <li className="ml-3" >
-              <button onClick={handleClick} className="p-1 cursor-pointer transition-all duration-500 border-white border-solid border rounded text-sm uppercase bg-white text-blue-900 hover:bg-transparent hover:text-white font-bold">
+              <button onClick={handleClick} className="p-1 cursor-pointer transition-all duration-500 border-white border-solid border rounded text-sm uppercase bg-white text-blue-900 hover:text-pink-500 font-bold">
                 logout
               </button>
             </li>
@@ -41,11 +42,16 @@ function Navbar() {
             <li>
                 <button onClick={() => {
                 dispatch({type: "openPopup"})
+                dispatch({type: "setPopupView", payload: "login"})
                 closeMenu()
               }} className="p-1 cursor-pointer transition-all duration-500 text-sm uppercase bg-gray-500 md:bg-transparent text-white px-8 py-3 mr-3 hover:bg-sky-500">Login</button>
             </li>
-            <li className='bg-gray-500 md:bg-transparent text-white px-6 py-3 hover:bg-sky-500 cursor-pointer'>
-                <Link className='text-white uppercase' closeMenu={closeMenu} to="signup">Sign Up</Link>
+            <li>
+                <button className="p-1 cursor-pointer transition-all duration-500 text-sm uppercase bg-gray-500 md:bg-transparent text-white px-8 py-3 mr-3 hover:bg-sky-500" closeMenu={closeMenu} onClick={() => {
+                  dispatch({type: "openPopup"})  
+                  dispatch({type: "setPopupView", payload: 'signup'})  
+                  closeMenu()
+                }}>Sign Up</button>
             </li>
         </ul>}
         <ul className={'md:flex gap-5'}>

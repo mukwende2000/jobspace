@@ -15,6 +15,9 @@ img {
 li {
     list-style: none;
 }
+.editor li {
+    list-style: inherit;
+}
 article li {
     list-style: initial;
     margin-left: -20px;

@@ -11,16 +11,7 @@ import { useEffect } from 'react';
 function Header() {
     const location = useLocation()
     const { dispatch } = useDispatchProvider()
-
-    let h1 
-    let p = location.pathname === '/' ? 'More than 1,523 jobs listed here' : location.pathname.slice(1)
-    if(location.pathname === '/') {
-        h1 = 'Find your next job'
-    } else if(location.pathname === '/about') {
-        h1 = 'About us'
-    } else if(location.pathname === '/jobs') {
-        h1 = 'Jobs'
-    }
+    
     function openMenu() {
         dispatch({type: "openMenu"})
       }
@@ -33,10 +24,11 @@ function Header() {
             <FaBars onClick={openMenu} className="cursor-pointer text-2xl md:hidden" />
         </div>
         <div className="hero flex flex-col items-center mt-20 mb-20">
-            <h1 className='capitalize m-0 p-0 text-5xl'>{ h1 }</h1>
-            <p className='m-0 text-xl'>{ p }</p>
+            <h1 className='capitalize m-0 p-0 text-5xl'>Find Your Next Job</h1>
+            <p className='m-0 text-xl'>More than 1, 523 jobs listed here</p>
+            <p>{location.pathname === '/' ? "HOME" : location.pathname.slice(1).toUpperCase()}</p>
         </div>
-        { location.pathname === '/' && <form className='bg-white py-16 px-8 mt-5 w-11/12 flex flex-wrap md:flex-row gap-4 items-center shadow-md shadow-black/20' >
+        { location.pathname === '/' && <form className='bg-white py-16 px-8 w-11/12 flex flex-wrap md:flex-row gap-4 items-center shadow-md shadow-black/20' >
             <input type="text" placeholder='e.g web design' className='border border-gray-300 focus:outline-none w-full lg:w-2/15 md:w-5/12 h-10 block' />
             <input type="text" placeholder='Location' className='border border-gray-300 focus:outline-none w-full md:w-5/12 lg:w-2/15 h-10 my-4 block' />
             <select name="" id="" className='border border-gray-300 focus:outline-none w-full md:w-5/12 lg:w-2/15 h-10 block mb-4 lg:mt-4 lg:h-11'>

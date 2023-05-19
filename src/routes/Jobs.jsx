@@ -37,7 +37,7 @@ export default function Jobs() {
     <div className="md:px-20">
         <button onClick={ () => navigate('/post-job') } className="cursor-pointer bg-sky-500 text-white duration-200 hover:text-sky-500 border-solid border hover:border-sky-500 hover:bg-white px-5 py-3 text-lg">Post A Job</button>
         {jobs ? <div className="lg:flex gap-24"> 
-          <ul className="w-[70%]">
+          <ul className="md:w-[70%]">
             <li className="-ml-10">
               <div className="flex items-center justify-between text-gray-500">
                 <p>Showing 1-10 of 34 Jobs</p>

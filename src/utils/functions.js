@@ -53,6 +53,10 @@ export function calculatePostAge(datePosted, date) {
             return {
                 ...state, currentUser: payload.currentUser
             }
+        case "setPopupView":
+            return {
+              ...state, popupView: payload
+            }
         default:
             return state;
     }
@@ -64,9 +68,12 @@ const data = [
     closing: "2023-06-08",
     datePosted: new Date().toLocaleString(),
     description: `Looking for a living in maid, must be able to do basic
-    house chores and act as baby sitter, aged between 20 to 30, if interested, call me on 909880900"`,
+    house chores and act as baby sitter, aged between 20 to 30`,
     location: "Lusaka, Kanyama", 
     salary: '2000',
+    contact: 975322344,
+    email: 'test@test.com',
+    qualification: 'You need to know how to take care of children and have a good heart and love for kids',
     title: "Living in maid",
     type: "Full Time"
     
@@ -76,9 +83,12 @@ const data = [
     closing: "2023-06-08",
     datePosted: new Date().toLocaleString(),
     description: `Looking for a living in maid, must be able to do basic
-    house chores and act as baby sitter, aged between 20 to 30, if interested, call me on 909880900"`,
+    house chores and act as baby sitter, aged between 20 to 30`,
     location: "Lusaka, Kanyama", 
     salary: '2000',
+    contact: 975322344,
+    email: 'test@test.com',
+    qualification: 'You need to know how to take care of children and have a good heart and love for kids',
     title: "Living in maid",
     type: "Part Time"
     
@@ -88,9 +98,12 @@ const data = [
     closing: "2023-06-08",
     datePosted: new Date().toLocaleString(),
     description: `Looking for a living in maid, must be able to do basic
-    house chores and act as baby sitter, aged between 20 to 30, if interested, call me on 909880900"`,
+    house chores and act as baby sitter, aged between 20 to 30`,
     location: "Lusaka, Kanyama", 
     salary: '2000',
+    contact: 975322344,
+    email: 'test@test.com',
+    qualification: 'You need to know how to take care of children and have a good heart and love for kids',
     title: "Living in maid",
     type: "Contract"
     
