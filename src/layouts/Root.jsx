@@ -1,18 +1,28 @@
-import {Outlet } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 
-// context
 import useStateProvider from "../Contexts/ContextProvider";
 import { useDispatchProvider } from "../Contexts/ContextProvider";
 
-// components
 import Backdrop from "../components/Backdrop";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import Popup from "../components/Popup";
+import { useEffect } from "react";
 
-export default function Root() {
+function Root() {
   const { menuIsOpen, popupIsOpen } = useStateProvider()
   const { dispatch } = useDispatchProvider()
+
+  useEffect(() => {
+    function handleResize() {
+      dispatch({type: "closePopup"})
+      dispatch({type: "closeMenu"})
+    }
+    window.addEventListener('resize', handleResize)
+    return () => {
+      window.removeEventListener('resize', handleResize)
+    }
+  }, [])
 
   return (
     <div className="">
@@ -29,3 +39,4 @@ export default function Root() {
     </div>
   )
 }
+export default Root

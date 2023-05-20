@@ -1,5 +1,5 @@
 import { useReducer, useContext, createContext } from "react";
-import { reducer } from "../utils/functions";
+import { reducer } from "../utils/helperFunctions";
 
 const initialState = {
     popupIsOpen: false,

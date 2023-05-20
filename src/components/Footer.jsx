@@ -1,6 +1,6 @@
-import logo from '../assets/images/logo.jpg'
-import ListItem from './ListItem'
 import { FaFacebook, FaTwitter, FaLinkedin, FaEnvelope  } from 'react-icons/fa'
+import ListItem from './ListItem'
+import logo from '../assets/images/logo.jpg'
 
 function Footer() {
   return (
@@ -18,9 +18,9 @@ function Footer() {
             </li>
             <li>
                 <div className='flex gap-5'>
-                        <FaFacebook className='cursor-pointer hover:text-pink-500 text-white text-3xl' />
-                        <FaTwitter className='cursor-pointer text-white text-3xl hover:text-pink-500' />
-                        <FaLinkedin className='cursor-pointer text-white text-3xl hover:text-pink-500' />
+                        <FaFacebook aria-label='Facebook' className='cursor-pointer hover:text-pink-500 text-white text-3xl' />
+                        <FaTwitter aria-label='Twitter' className='cursor-pointer text-white text-3xl hover:text-pink-500' />
+                        <FaLinkedin aria-label='Linkedin' className='cursor-pointer text-white text-3xl hover:text-pink-500' />
                 </div>
             </li>
         </ul>
@@ -48,7 +48,7 @@ function Footer() {
             </p>
             <div className='outline outline-zinc-600 outline-1 flex items-center w-10/12 mr-auto'>
                 <input type="text" placeholder='Enter your email' className='px-2 border-none text-white text-lg bg-zinc-600 h-10 w-full placeholder:text-white placeholder:text-lg focus:outline-none' />
-                <button className='w-2/12 h-10 bg-zinc-600 cursor-pointer hover:bg-zinc-400 transition-colors duration-500'> <FaEnvelope className='text-2xl' color='white'/> </button>
+                <button className='w-2/12 h-10 bg-zinc-600 cursor-pointer hover:bg-zinc-400 transition-colors duration-500'> <FaEnvelope  className='text-2xl' color='white'/> </button>
             </div>
         </ul>
        </div>

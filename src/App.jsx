@@ -1,15 +1,20 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import { jobsLoader, jobLoader, profileLoader } from './utils/loaders'
+import { signupAction, postJobAction} from './utils/actions'
+import { retrieveJobs } from './data/jobs'
+import { retrieveUsers } from './data/users'
 import Root from './layouts/Root'
-import Jobs, { loader as jobsLoader } from './routes/Jobs'
+import Jobs from './routes/Jobs'
 import Home from './routes/Home'
-import Job, { loader as jobLoader} from './routes/Job'
+import Job from './routes/Job'
 import About from './routes/About'
-import PostJob, { action as PostJobAction} from './routes/PostJob'
-import { action as signupAction} from './routes/signupAction'
-import Profile, { loader as profileLoader} from './routes/Profile'
+import PostJob from './routes/PostJob'
+import Profile from './routes/Profile'
+
+retrieveJobs()
+retrieveUsers()
 
 function App() {
-
   const router = createBrowserRouter([
     {
       path: '/',
@@ -36,11 +41,10 @@ function App() {
         {
           path: 'post-job',
           element: <PostJob />,
-          action: PostJobAction
+          action: postJobAction
         },
         {
           path: 'signup',
-          // element: <SignUp />,
           action: signupAction
         },
         {
@@ -58,5 +62,4 @@ function App() {
     </div>
   )
 }
-
 export default App

@@ -1,8 +1,13 @@
 import { Link } from "react-router-dom"
 import Button from "../components/Button"
-import { useEffect, useState } from "react"
+import { useEffect} from "react"
 
 export default function Home() {
+
+  useEffect(() => {
+    document.title = `Jobspace | Home`
+  }, [])
+
   return (
     <div className="px-20 py-5 bg-[url('./assets/images/hero.jpg')] flex flex-col items-center md:block  my-5 text-white">
       <div className="md:flex justify-between my-10">

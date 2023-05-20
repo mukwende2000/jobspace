@@ -26,8 +26,3 @@ export default function Job() {
   )
 }
 
-export async function loader({ params }) {
-  const response = JSON.parse(localStorage.getItem("jobs"))
-  const resData = response[params.jobId]
-  return resData
-}
