@@ -24,6 +24,7 @@ export default function Profile() {
 
     function handleClick() {
         dispatch({type: "logoutUser"})
+        dispatch({type: "setCurrentUser", payload: {currentUser: null}})
         localStorage.setItem('newUser', JSON.stringify(null))
         navigate('/')
     }
