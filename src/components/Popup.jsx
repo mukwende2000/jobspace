@@ -57,12 +57,12 @@ export default function Popup() {
             <Form method="POST" action="signup">
               <p>{data?.error}</p>
               <div className="w-10/12 my-7 mx-auto">
-                <input className="block w-full h-8 my-5" type="text" name="username" placeholder='Your Username'/>
-                <input className="block w-full h-8 my-5" type="email" name="email" placeholder='Your Email'/>
-                <input className="block w-full h-8 my-3" type="password" name='password' placeholder='Choose Password'/>
-                <input className="block w-full h-8 my-3" type="password" name='confirmation' placeholder='Confirm Password'/>
-                <input className="block w-full h-8 my-3" type="text" name="company" placeholder='Company Name'/>
-                <input className="block w-full h-8 my-3" type="text" name='location' placeholder='Location'/> 
+                <input className="block w-full h-8 my-5" type="text" name="username" placeholder='Your Username' required/>
+                <input className="block w-full h-8 my-5" type="email" name="email" placeholder='Your Email' required/>
+                <input className="block w-full h-8 my-3" type="password" name='password' placeholder='Choose Password' required/>
+                <input className="block w-full h-8 my-3" type="password" name='confirmation' placeholder='Confirm Password' required/>
+                <input className="block w-full h-8 my-3" type="text" name="company" placeholder='Company Name' required/>
+                <input className="block w-full h-8 my-3" type="text" name='location' placeholder='Location' required/> 
                 <button className="text-xl text-white p-2 w-full bg-[#007bff] cursor-pointer" type='submit'>Sign Up</button>
               </div>
               <p className="text-center text-gray-600">Or Register with</p>

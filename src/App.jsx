@@ -10,6 +10,7 @@ import Job from './routes/Job'
 import About from './routes/About'
 import PostJob from './routes/PostJob'
 import Profile from './routes/Profile'
+import Signup from './routes/Signup'
 
 retrieveJobs()
 retrieveUsers()
@@ -45,6 +46,7 @@ function App() {
         },
         {
           path: 'signup',
+          element: <Signup />,
           action: signupAction
         },
         {

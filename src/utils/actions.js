@@ -40,9 +40,13 @@ export async function signupAction({ request }) {
     jobs: []
   }
 
+  if(!isValidName(data.get("username"))) {
+    return {error: `Sorry ${data.get("username")} is already taken try something else like ${data.get("username")}_22`}
+  }
   if(!passwordValidation(data)) {
     return {error: 'Password do not match, try again'}
   }
+  
   localStorage.setItem('newUser', JSON.stringify(user))
 
   if(localStorage.getItem("users")) {
@@ -52,10 +56,22 @@ export async function signupAction({ request }) {
   } else {
     localStorage.setItem("users", JSON.stringify([user]))
   }
-  console.log(user)
   return redirect('/profile')
 }
 
 function passwordValidation(data) {
    return data.get("password") === data.get("confirmation")
-  }
+}
+
+function isValidName(name) {
+  const users = JSON.parse(localStorage.getItem('users'))
+  let value;
+  users.map(user => {
+    if(user.username === name) {
+      value = false
+    } else {
+      value = true
+    }
+  })
+  return value
+}
