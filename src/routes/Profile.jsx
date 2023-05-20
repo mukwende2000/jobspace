@@ -7,22 +7,22 @@ export default function Profile() {
     const navigate = useNavigate()
     const { dispatch } = useDispatchProvider()
     let { currentUser } = useStateProvider()
-    const data = useLoaderData() || currentUser;
+    const data = useLoaderData() || currentUser
     const newUser = JSON.parse(localStorage.getItem('newUser')) 
 
     useEffect(() => {
-        dispatch({type: "closePopup"})
+        dispatch({type: 'closePopup'})
         if(!currentUser) {
-            dispatch({type: "loginUser"})   
+            dispatch({type: 'loginUser'})
         }
 
-        if(newUser !== null) {
-            dispatch({type: 'setCurrentUser', payload: { currentUser: newUser}})
-            localStorage.setItem('newUser', JSON.stringify(null)) 
-        }        
+        if(newUser) {
+            dispatch({type: 'setCurrentUser', payload: {currentUser: newUser}})
+            localStorage.setItem('newUser', JSON.stringify(newUser))
+        }
     }, [])
 
-     function handleClick() {
+    function handleClick() {
         dispatch({type: "logoutUser"})
         localStorage.setItem('newUser', JSON.stringify(null))
         navigate('/')
