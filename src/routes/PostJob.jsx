@@ -60,14 +60,14 @@ export default function PostJob() {
           </div>
           <label htmlFor="description">
             <span>Role</span>
-            <textarea  className="w-full p-3"  name="description" id="description" cols="30" rows="10" 
+            <textarea  className="w-full p-3 leading-6"  name="description" id="description" cols="30" rows="10" 
             placeholder={rolePlaceholder} required>
               
             </textarea>
           </label>
           <label htmlFor="qualification">
             <span>Qualification</span>
-            <textarea  className="w-full p-3"  name="qualification" id="qualification" cols="30" rows="10" 
+            <textarea  className="w-full p-3 leading-4"  name="qualification" id="qualification" cols="30" rows="10" 
             placeholder={qualificationPlacholder} required>
             </textarea>
           </label>

@@ -24,10 +24,10 @@ function Header() {
             <p>{pathname === '/' ? "HOME" : pathname.slice(1).toUpperCase()}</p>
         </div>
         { pathname === '/' && 
-        <form className='bg-white py-16 px-8 w-11/12 flex flex-wrap md:flex-row gap-4 items-center shadow-md shadow-black/20' >
+        <form className='bg-white py-10 px-8 w-11/12 flex flex-wrap md:flex-row gap-4 items-center shadow-md shadow-black/20' >
             <input type="text" placeholder='e.g web design' className='border border-gray-300 focus:outline-none w-full lg:w-2/15 md:w-5/12 h-10 block' />
-            <input type="text" placeholder='Location' className='border border-gray-300 focus:outline-none w-full md:w-5/12 lg:w-2/15 h-10 my-4 block' />
-            <select name="" id="" className='border border-gray-300 focus:outline-none w-full md:w-5/12 lg:w-2/15 h-10 block mb-4 lg:mt-4 lg:h-11'>
+            <input type="text" placeholder='Location' className='border border-gray-300 focus:outline-none w-full md:w-5/12 lg:w-2/15 h-10 my-2 block' />
+            <select name="category" className='border border-gray-300 focus:outline-none w-full md:w-5/12 lg:w-2/15 h-10 block mb-4 lg:mt-4 lg:h-11'>
                 <option value="1">Any Category</option>
                 <option value="2">Web designer</option>
                 <option value="3">Web developer</option>

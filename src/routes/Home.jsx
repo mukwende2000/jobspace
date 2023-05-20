@@ -9,8 +9,8 @@ export default function Home() {
   }, [])
 
   return (
-    <div className="px-20 py-5 bg-[url('./assets/images/hero.jpg')] flex flex-col items-center md:block  my-5 text-white">
-      <div className="md:flex justify-between my-10">
+    <div className="px-20 py-5 bg-[url('./assets/images/hero.jpg')] flex flex-col items-center md:block mb-5 text-white">
+      <div className="md:flex justify-between mb-10">
         <div className="text-center">
           <p className="font-bold text-3xl mt-5 mb-1">{ 1576 }</p>
           <p className="text-xl m-0">Job Posts</p>
@@ -29,7 +29,7 @@ export default function Home() {
         </div>
       </div>
       <Link to={'jobs'}>
-         <Button text="Find a Job" width={'48'} />
+         <Button text="Find a Job" auto width={'48'} />
       </Link>
     </div>
   )
